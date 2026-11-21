@@ -4,844 +4,784 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#F4F6F8">
+  <meta name="theme-color" content="#111316">
+  <title>WELTO — Your money. Your world.</title>
+  <meta name="description" content="WELTO brings your entire financial world together in one place.">
 
-  <title>WELTO — ფინანსური სამყარო ერთ სივრცეში</title>
-  <meta name="description" content="WELTO აერთიანებს შენს ფულს, ქონებასა და ფინანსურ მომავალს ერთ სივრცეში.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Georgian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    @font-face {
-      font-family: "BOG";
-      src: url("https://webstatic.bog.ge/fonts/BOG/BOG-Regular.woff2") format("woff2");
-      font-weight: 400;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "BOG";
-      src: url("https://webstatic.bog.ge/fonts/BOG/BOG-Headline-Medium.woff2") format("woff2");
-      font-weight: 500 700;
-      font-display: swap;
-    }
-
     :root {
-      --ink: #111316;
+      --black: #111316;
       --graphite: #292E34;
-      --paper: #F4F6F8;
-      --white: #FFFFFF;
+      --white: #F4F6F8;
       --ice: #A7C3D9;
       --silver: #B8BEC7;
-      --muted: #747C85;
-      --line: #E3E7EB;
+      --muted: #777F89;
+      --line: rgba(41,46,52,.12);
+      --font: "Noto Sans Georgian", "Manrope", sans-serif;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
-      background: var(--paper);
-      color: var(--ink);
-      font-family: "BOG", "Noto Sans Georgian", sans-serif;
+      margin: 0;
+      background: var(--white);
+      color: var(--black);
+      font-family: var(--font);
       -webkit-font-smoothing: antialiased;
     }
 
-    button, a {
-      font: inherit;
-    }
+    button, a { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; }
 
-    button {
-      cursor: pointer;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1320px, calc(100% - 112px));
-      margin: 0 auto;
+    .page {
+      min-height: 100vh;
+      overflow: hidden;
     }
 
     /* HEADER */
 
     .header {
-      height: 88px;
-      background: var(--paper);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .header-inner {
-      height: 100%;
+      height: 82px;
+      padding: 0 7.2%;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+      background: rgba(244,246,248,.92);
+      position: relative;
+      z-index: 10;
     }
 
     .brand {
       font-family: "Manrope", sans-serif;
       font-size: 27px;
       font-weight: 800;
-      letter-spacing: 3px;
+      letter-spacing: -1.8px;
+      color: var(--black);
     }
 
     .header-right {
       display: flex;
       align-items: center;
-      gap: 34px;
+      gap: 30px;
     }
 
     .language {
       display: flex;
       align-items: center;
-      gap: 10px;
-      color: var(--muted);
+      gap: 5px;
       font-family: "Manrope", sans-serif;
-      font-size: 11px;
-      font-weight: 600;
+      font-size: 12px;
+      font-weight: 700;
+      color: #9299A2;
     }
 
     .language button {
       border: 0;
+      padding: 5px 3px;
       background: transparent;
-      color: var(--muted);
+      color: inherit;
       font-size: inherit;
       font-weight: inherit;
-      opacity: .65;
     }
 
-    .language button.active {
-      color: var(--ink);
-      opacity: 1;
-    }
+    .language button.active { color: var(--black); }
 
-    .language span {
-      color: var(--silver);
-    }
+    .language span { color: #C5CAD0; }
 
     .login {
-      color: var(--graphite);
+      border: 0;
+      background: transparent;
       font-size: 13px;
-      font-weight: 500;
-      transition: opacity .2s;
+      font-weight: 600;
+      color: var(--black);
+      padding: 10px 0;
     }
 
-    .login:hover {
-      opacity: .6;
+    .signup {
+      border: 0;
+      border-radius: 7px;
+      padding: 13px 21px;
+      background: var(--black);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      transition: .2s ease;
     }
 
-    .button {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 49px;
-      padding: 0 27px;
-      border: 1px solid var(--ink);
-      border-radius: 3px;
-      background: var(--ink);
-      color: var(--white);
-      font-size: 13px;
-      font-weight: 500;
-      transition: background .2s, border-color .2s;
-    }
-
-    .button:hover {
+    .signup:hover {
       background: var(--graphite);
-      border-color: var(--graphite);
+      transform: translateY(-1px);
     }
 
     /* HERO */
 
     .hero {
       min-height: 690px;
-      display: flex;
+      padding: 88px 7.2% 90px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
-      padding: 90px 0 100px;
+      gap: 7%;
+      position: relative;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.25fr .75fr;
-      align-items: center;
-      gap: 75px;
+    .hero-copy {
+      max-width: 590px;
+      position: relative;
+      z-index: 2;
+      padding-bottom: 12px;
     }
 
     .eyebrow {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 34px;
-      color: #737D87;
+      margin-bottom: 29px;
+      color: #68727D;
       font-family: "Manrope", sans-serif;
       font-size: 10px;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
     }
 
     .eyebrow::before {
       content: "";
-      width: 26px;
-      height: 2px;
+      width: 27px;
+      height: 1px;
       background: var(--ice);
     }
 
     h1 {
-      max-width: 790px;
-      font-size: clamp(54px, 6.1vw, 86px);
-      font-weight: 500;
-      line-height: 1.16;
-      letter-spacing: -2.8px;
+      margin: 0;
+      max-width: 610px;
+      font-size: clamp(43px, 5.1vw, 69px);
+      line-height: 1.19;
+      letter-spacing: -2.7px;
+      font-weight: 700;
     }
 
-    body[lang="ka"] h1 {
-      line-height: 1.35;
-      letter-spacing: -1.5px;
+    h1 .accent {
+      color: #829FB8;
     }
 
     .hero-description {
-      max-width: 470px;
-      margin-top: 29px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.9;
+      max-width: 440px;
+      margin: 28px 0 0;
+      color: #68717B;
+      font-size: 14px;
+      line-height: 2;
+      font-weight: 400;
     }
 
     .hero-actions {
       display: flex;
       align-items: center;
-      gap: 27px;
-      margin-top: 39px;
+      gap: 22px;
+      margin-top: 38px;
     }
 
-    .text-link {
-      color: var(--graphite);
-      font-size: 13px;
-      font-weight: 500;
-      border-bottom: 1px solid var(--silver);
-      padding-bottom: 4px;
+    .primary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 51px;
+      padding: 0 24px;
+      background: var(--black);
+      color: white;
+      border-radius: 7px;
+      border: 1px solid var(--black);
+      font-size: 12px;
+      font-weight: 700;
+      transition: .2s ease;
     }
 
-    /* EDITORIAL VISUAL */
+    .primary-button:hover {
+      background: #303740;
+      transform: translateY(-2px);
+    }
 
-    .hero-visual {
-      min-height: 440px;
-      padding: 39px;
+    .secondary-link {
+      font-size: 12px;
+      font-weight: 700;
+      color: #535D68;
+      border-bottom: 1px solid #A7C3D9;
+      padding: 8px 0;
+    }
+
+    .hero-note {
+      margin-top: 55px;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: var(--ink);
-      color: var(--white);
+      align-items: center;
+      gap: 11px;
+      color: #9299A1;
+      font-family: "Manrope", sans-serif;
+      font-size: 10px;
+      letter-spacing: .2px;
     }
 
-    .visual-top {
+    .note-mark {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #91AEC5;
+    }
+
+    /* FINANCIAL VISUAL */
+
+    .visual {
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .visual-backdrop {
+      position: absolute;
+      width: 410px;
+      height: 410px;
+      border-radius: 50%;
+      background: #E7EDF2;
+      filter: blur(1px);
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .finance-card {
+      width: min(100%, 440px);
+      min-height: 370px;
+      position: relative;
+      z-index: 1;
+      padding: 30px;
+      border-radius: 15px;
+      background: var(--black);
+      color: white;
+      box-shadow: 0 32px 75px rgba(17,19,22,.16);
+      transform: rotate(-2deg);
+    }
+
+    .card-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .visual-label {
-      color: #B9C0C8;
+    .card-logo {
       font-family: "Manrope", sans-serif;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 2px;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -1px;
     }
 
-    .visual-index {
-      color: #7E8791;
+    .card-period {
+      color: #AAB2BC;
       font-family: "Manrope", sans-serif;
       font-size: 10px;
     }
 
-    .visual-main {
-      padding: 55px 0;
+    .balance-label {
+      margin-top: 39px;
+      color: #AAB2BC;
+      font-size: 11px;
     }
 
-    .visual-word {
+    .balance {
+      margin-top: 8px;
       font-family: "Manrope", sans-serif;
-      font-size: clamp(42px, 5vw, 65px);
+      font-size: 38px;
+      line-height: 1.3;
       font-weight: 600;
-      letter-spacing: -3px;
-      line-height: 1;
+      letter-spacing: -1.8px;
     }
 
-    .visual-caption {
-      max-width: 250px;
-      margin-top: 22px;
-      color: #B6BEC7;
-      font-size: 14px;
-      line-height: 1.8;
+    .balance small {
+      font-size: 17px;
+      color: #AAB2BC;
+      letter-spacing: 0;
     }
 
-    .visual-bottom {
-      padding-top: 20px;
-      border-top: 1px solid #373D45;
+    .balance-change {
+      margin-top: 9px;
+      color: #A7C3D9;
+      font-family: "Manrope", sans-serif;
+      font-size: 10px;
+    }
+
+    .chart {
+      height: 112px;
+      margin-top: 24px;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,.13);
+    }
+
+    .chart svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .chart-labels {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      color: #AEB7C0;
+      margin-top: 10px;
+      color: #828D98;
       font-family: "Manrope", sans-serif;
       font-size: 9px;
-      letter-spacing: 1.5px;
     }
 
-    .visual-bottom strong {
-      color: var(--ice);
-      font-weight: 500;
+    .floating-panel {
+      position: absolute;
+      z-index: 2;
+      right: -7%;
+      bottom: 38px;
+      width: 205px;
+      padding: 17px;
+      border-radius: 11px;
+      background: white;
+      box-shadow: 0 16px 45px rgba(32,43,53,.12);
+      transform: rotate(2deg);
     }
 
-    /* PRINCIPLES */
-
-    .principles {
-      padding: 0 0 85px;
+    .panel-heading {
+      font-size: 10px;
+      font-weight: 700;
+      color: #4B5661;
+      margin-bottom: 15px;
     }
 
-    .principles-inner {
+    .transaction {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .transaction-info {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .transaction-icon {
+      width: 29px;
+      height: 29px;
+      display: grid;
+      place-items: center;
+      border-radius: 7px;
+      background: #EEF2F5;
+      color: #53697C;
+      font-family: "Manrope", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .transaction-name {
+      font-size: 9px;
+      font-weight: 700;
+      color: #343C44;
+    }
+
+    .transaction-date {
+      margin-top: 3px;
+      font-family: "Manrope", sans-serif;
+      font-size: 8px;
+      color: #9AA1A9;
+    }
+
+    .transaction-amount {
+      font-family: "Manrope", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: #333B44;
+    }
+
+    .small-card {
+      position: absolute;
+      z-index: 2;
+      left: -7%;
+      top: 43px;
+      width: 155px;
+      padding: 17px;
+      border-radius: 10px;
+      background: #DCE7EF;
+      box-shadow: 0 13px 35px rgba(40,55,70,.09);
+      transform: rotate(5deg);
+    }
+
+    .small-card-label {
+      color: #64798B;
+      font-size: 9px;
+      font-weight: 600;
+    }
+
+    .small-card-value {
+      margin-top: 11px;
+      color: #202A33;
+      font-family: "Manrope", sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -.7px;
+    }
+
+    .small-card-bottom {
+      margin-top: 8px;
+      color: #75899A;
+      font-family: "Manrope", sans-serif;
+      font-size: 8px;
+    }
+
+    /* LOWER SECTION */
+
+    .statement {
+      padding: 31px 7.2%;
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .principle {
-      padding: 28px 30px 29px 0;
-    }
-
-    .principle + .principle {
-      padding-left: 30px;
-      border-left: 1px solid var(--line);
-    }
-
-    .principle-number {
-      margin-bottom: 15px;
-      color: #929BA4;
-      font-family: "Manrope", sans-serif;
-      font-size: 10px;
-      letter-spacing: 1.5px;
-    }
-
-    .principle h2 {
-      margin-bottom: 8px;
-      font-size: 19px;
-      font-weight: 500;
-    }
-
-    .principle p {
-      max-width: 300px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.8;
-    }
-
-    /* FOOTER */
-
-    .footer {
-      padding: 26px 0 32px;
-    }
-
-    .footer-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      gap: 25px;
     }
 
-    .footer-brand {
-      font-family: "Manrope", sans-serif;
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 2px;
-    }
-
-    .footer-copy {
-      color: #89919A;
-      font-size: 11px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .footer-links a {
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .footer-links a:hover {
-      color: var(--ink);
-    }
-
-    /* MODAL */
-
-    .overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 10;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      padding: 24px;
-      background: rgba(17, 19, 22, .45);
-    }
-
-    .overlay.open {
-      display: flex;
-    }
-
-    .modal {
-      width: 100%;
-      max-width: 390px;
-      padding: 40px;
-      background: var(--white);
-      border-radius: 4px;
-    }
-
-    .modal h2 {
-      margin-bottom: 12px;
-      font-size: 24px;
-      font-weight: 500;
-    }
-
-    .modal p {
-      margin-bottom: 25px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .modal button {
-      min-height: 43px;
-      padding: 0 23px;
-      border: 0;
-      border-radius: 3px;
-      background: var(--ink);
-      color: var(--white);
+    .statement-text {
       font-size: 12px;
+      font-weight: 600;
+      color: #555F69;
     }
+
+    .statement-meta {
+      font-family: "Manrope", sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.3px;
+      font-weight: 700;
+      color: #9AA2AA;
+    }
+
+    .bottom {
+      padding: 31px 7.2%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #929AA2;
+      font-family: "Manrope", sans-serif;
+      font-size: 10px;
+    }
+
+    .bottom-brand {
+      color: var(--black);
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .bottom-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .bottom-links a:hover { color: var(--black); }
 
     /* RESPONSIVE */
 
-    @media (max-width: 950px) {
-      .container {
-        width: calc(100% - 64px);
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 55px;
-      }
-
-      .hero {
-        padding: 90px 0 80px;
-      }
-
-      .hero-visual {
-        min-height: 350px;
-      }
-
-      .visual-main {
-        padding: 35px 0;
-      }
+    @media (max-width: 1050px) {
+      .header, .hero, .statement, .bottom { padding-left: 5%; padding-right: 5%; }
+      .hero { gap: 4%; }
+      .floating-panel { right: -3%; }
+      .small-card { left: -3%; }
+      h1 { font-size: clamp(42px, 5.4vw, 60px); }
     }
 
-    @media (max-width: 600px) {
-      .container {
-        width: calc(100% - 36px);
-      }
-
+    @media (max-width: 760px) {
       .header {
         height: 72px;
+        padding: 0 22px;
       }
 
-      .brand {
-        font-size: 22px;
-      }
-
-      .header-right {
-        gap: 15px;
-      }
-
-      .login {
-        font-size: 11px;
-      }
-
-      .button {
-        min-height: 42px;
-        padding: 0 15px;
-        font-size: 11px;
-      }
+      .brand { font-size: 24px; }
+      .header-right { gap: 17px; }
+      .login { display: none; }
+      .signup { padding: 11px 14px; font-size: 10px; }
 
       .hero {
-        padding: 85px 0 65px;
-      }
-
-      h1 {
-        font-size: clamp(43px, 11vw, 60px);
-        letter-spacing: -1.8px;
-      }
-
-      body[lang="ka"] h1 {
-        letter-spacing: -1px;
-      }
-
-      .hero-description {
-        margin-top: 22px;
-        font-size: 14px;
-      }
-
-      .hero-actions {
-        gap: 18px;
-        margin-top: 30px;
-      }
-
-      .hero-visual {
-        min-height: 310px;
-        padding: 26px;
-      }
-
-      .visual-word {
-        font-size: 48px;
-      }
-
-      .principles {
-        padding-bottom: 55px;
-      }
-
-      .principles-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .principle {
-        padding: 24px 0;
-      }
-
-      .principle + .principle {
-        padding-left: 0;
-        border-left: 0;
-        border-top: 1px solid var(--line);
-      }
-
-      .footer-inner {
+        display: flex;
         flex-direction: column;
+        align-items: stretch;
+        padding: 65px 23px 55px;
+        gap: 25px;
+      }
+
+      .hero-copy { max-width: 100%; }
+      .eyebrow { margin-bottom: 22px; font-size: 9px; }
+      h1 { font-size: clamp(39px, 10vw, 55px); letter-spacing: -1.8px; }
+      .hero-description { font-size: 13px; line-height: 1.9; margin-top: 20px; }
+      .hero-actions { margin-top: 27px; gap: 18px; }
+      .primary-button { min-height: 47px; padding: 0 18px; font-size: 11px; }
+      .secondary-link { font-size: 11px; }
+      .hero-note { margin-top: 31px; }
+
+      .visual {
+        min-height: 390px;
+        margin: 8px 4px 0;
+      }
+
+      .visual-backdrop {
+        width: 290px;
+        height: 290px;
+        right: 2%;
+      }
+
+      .finance-card {
+        width: 90%;
+        min-height: 310px;
+        padding: 23px;
+      }
+
+      .balance { font-size: 32px; }
+      .balance-label { margin-top: 28px; }
+      .chart { height: 85px; margin-top: 20px; }
+      .floating-panel { width: 165px; right: -1%; bottom: 15px; padding: 13px; }
+      .small-card { width: 130px; left: -2%; top: 22px; padding: 13px; }
+      .small-card-value { font-size: 17px; }
+
+      .statement {
+        padding: 25px 23px;
         align-items: flex-start;
-      }
-
-      .footer-links {
-        flex-wrap: wrap;
-      }
-    }
-
-    @media (max-width: 390px) {
-      .header-right {
+        flex-direction: column;
         gap: 10px;
       }
 
-      .language {
-        gap: 6px;
+      .bottom {
+        padding: 25px 23px;
+        flex-wrap: wrap;
+        gap: 18px;
       }
 
-      .login {
-        font-size: 10px;
-      }
+      .bottom-links { gap: 15px; }
+    }
 
-      .header .button {
-        padding: 0 10px;
-        font-size: 10px;
-      }
+    @media (max-width: 390px) {
+      .language { gap: 2px; }
+      .header-right { gap: 11px; }
+      .finance-card { width: 92%; }
+      .floating-panel { right: -3%; }
     }
   </style>
 </head>
 
-<body lang="ka">
+<body>
+  <div class="page">
 
-  <header class="header">
-    <div class="container header-inner">
-
-      <a class="brand" href="#">WELTO</a>
+    <header class="header">
+      <a class="brand" href="#" aria-label="WELTO home">WELTO</a>
 
       <div class="header-right">
-
-        <div class="language">
-          <button class="active" data-language="ka">KA</button>
+        <div class="language" aria-label="Language">
+          <button class="active" id="kaBtn" onclick="setLanguage('ka')">ქარ</button>
           <span>/</span>
-          <button data-language="en">EN</button>
+          <button id="enBtn" onclick="setLanguage('en')">ENG</button>
         </div>
 
-        <a href="#" class="login" data-action="login" data-i18n="login">შესვლა</a>
-
-        <button class="button" data-action="register" data-i18n="start">
-          ანგარიშის შექმნა
-        </button>
-
+        <button class="login" data-i18n="login">შესვლა</button>
+        <button class="signup" data-i18n="signup">ანგარიშის შექმნა</button>
       </div>
-    </div>
-  </header>
+    </header>
 
+    <main>
+      <section class="hero">
 
-  <main>
-
-    <section class="hero">
-      <div class="container hero-grid">
-
-        <div class="hero-content">
-
-          <div class="eyebrow" data-i18n="eyebrow">
-            PERSONAL FINANCE MANAGEMENT
-          </div>
+        <div class="hero-copy">
+          <div class="eyebrow" data-i18n="eyebrow">FINANCIAL LIFE, REDEFINED</div>
 
           <h1 data-i18n="headline">
-            შენი ფინანსური სამყარო ერთ სივრცეში.
+            შენი ფინანსური სამყარო.
+            <span class="accent">ერთ სივრცეში.</span>
           </h1>
 
           <p class="hero-description" data-i18n="description">
-            ფული, ქონება და ფინანსური მომავალი — გაერთიანებული ერთიან, გააზრებულ სისტემაში.
+            მართე შენი ფული, დაგეგმე მომავალი და დაინახე სრული ფინანსური სურათი — ერთი პლატფორმიდან.
           </p>
 
           <div class="hero-actions">
-
-            <button class="button" data-action="register" data-i18n="create">
-              დაიწყე ახლავე
-            </button>
-
-            <a href="#about" class="text-link" data-i18n="learn">
-              გაიგე მეტი
-            </a>
-
+            <a href="#about" class="primary-button" data-i18n="cta">აღმოაჩინე WELTO</a>
+            <a href="#about" class="secondary-link" data-i18n="learn">გაიგე მეტი</a>
           </div>
 
+          <div class="hero-note">
+            <span class="note-mark"></span>
+            <span data-i18n="note">ერთი სივრცე. სრული ფინანსური სურათი.</span>
+          </div>
         </div>
 
+        <div class="visual" aria-label="WELTO financial platform preview">
+          <div class="visual-backdrop"></div>
 
-        <div class="hero-visual">
-
-          <div class="visual-top">
-            <span class="visual-label">WELTO / FINANCIAL PLATFORM</span>
-            <span class="visual-index">01 — 01</span>
+          <div class="small-card">
+            <div class="small-card-label" data-i18n="assets">საერთო აქტივები</div>
+            <div class="small-card-value">₾ 48,250</div>
+            <div class="small-card-bottom" data-i18n="overview">ფინანსური მიმოხილვა</div>
           </div>
 
-          <div class="visual-main">
-            <div class="visual-word">WELTO.</div>
-            <p class="visual-caption" data-i18n="visualCaption">
-              A more complete perspective on your financial life.
-            </p>
+          <div class="finance-card">
+            <div class="card-top">
+              <div class="card-logo">WELTO</div>
+              <div class="card-period" data-i18n="period">წლიური მიმოხილვა</div>
+            </div>
+
+            <div class="balance-label" data-i18n="networth">წმინდა ქონება</div>
+            <div class="balance">₾ 126,840<small>.00</small></div>
+            <div class="balance-change" data-i18n="growth">+12.8% · ბოლო 12 თვე</div>
+
+            <div class="chart">
+              <svg viewBox="0 0 390 112" preserveAspectRatio="none" role="img" aria-label="Illustrative financial growth chart">
+                <defs>
+                  <linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#A7C3D9" stop-opacity=".28"/>
+                    <stop offset="100%" stop-color="#A7C3D9" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0 87 C22 82 27 75 48 78 S78 62 97 68 S124 47 145 56 S174 42 195 49 S220 28 244 39 S270 24 293 30 S320 17 342 23 S367 10 390 7 L390 112 L0 112 Z" fill="url(#chartFill)"/>
+                <path d="M0 87 C22 82 27 75 48 78 S78 62 97 68 S124 47 145 56 S174 42 195 49 S220 28 244 39 S270 24 293 30 S320 17 342 23 S367 10 390 7" fill="none" stroke="#A7C3D9" stroke-width="2.4" stroke-linecap="round"/>
+                <circle cx="390" cy="7" r="4" fill="#A7C3D9"/>
+              </svg>
+            </div>
+
+            <div class="chart-labels">
+              <span>JAN</span><span>MAR</span><span>MAY</span><span>JUL</span><span>SEP</span><span>DEC</span>
+            </div>
           </div>
 
-          <div class="visual-bottom">
-            <span>PERSONAL FINANCE</span>
-            <strong>EST. 2026</strong>
-          </div>
+          <div class="floating-panel">
+            <div class="panel-heading" data-i18n="recent">ბოლო ოპერაციები</div>
 
+            <div class="transaction">
+              <div class="transaction-info">
+                <div class="transaction-icon">S</div>
+                <div>
+                  <div class="transaction-name">Supermarket</div>
+                  <div class="transaction-date" data-i18n="today">დღეს</div>
+                </div>
+              </div>
+              <div class="transaction-amount">−₾ 84</div>
+            </div>
+
+            <div class="transaction">
+              <div class="transaction-info">
+                <div class="transaction-icon">+</div>
+                <div>
+                  <div class="transaction-name" data-i18n="income">Income</div>
+                  <div class="transaction-date" data-i18n="yesterday">გუშინ</div>
+                </div>
+              </div>
+              <div class="transaction-amount">+₾ 2,400</div>
+            </div>
+          </div>
         </div>
 
-      </div>
-    </section>
+      </section>
 
+      <section class="statement" id="about">
+        <div class="statement-text" data-i18n="statement">
+          შენი ფული მეტია, ვიდრე უბრალოდ შემოსავალი და ხარჯები.
+        </div>
+        <div class="statement-meta">WELTO — YOUR MONEY. YOUR WORLD.</div>
+      </section>
+    </main>
 
-    <section class="principles" id="about">
-      <div class="container principles-inner">
+    <footer class="bottom">
+      <a href="#" class="bottom-brand">WELTO</a>
 
-        <article class="principle">
-          <div class="principle-number">01</div>
-          <h2 data-i18n="moneyTitle">ფული</h2>
-          <p data-i18n="moneyDescription">
-            შენი შემოსავლები, ხარჯები და ყოველდღიური ფინანსები.
-          </p>
-        </article>
-
-        <article class="principle">
-          <div class="principle-number">02</div>
-          <h2 data-i18n="wealthTitle">ქონება</h2>
-          <p data-i18n="wealthDescription">
-            აქტივები, დანაზოგები, ინვესტიციები და ვალდებულებები.
-          </p>
-        </article>
-
-        <article class="principle">
-          <div class="principle-number">03</div>
-          <h2 data-i18n="futureTitle">მომავალი</h2>
-          <p data-i18n="futureDescription">
-            ფინანსური მიზნები, დაგეგმვა და პროგნოზები.
-          </p>
-        </article>
-
-      </div>
-    </section>
-
-  </main>
-
-
-  <footer class="footer">
-    <div class="container footer-inner">
-
-      <div class="footer-brand">WELTO</div>
-
-      <div class="footer-copy" data-i18n="copyright">
-        © 2026 WELTO. ყველა უფლება დაცულია.
-      </div>
-
-      <div class="footer-links">
+      <div class="bottom-links">
+        <a href="mailto:support.miste@gmail.com" data-i18n="contact">კონტაქტი</a>
         <a href="#about" data-i18n="about">ჩვენ შესახებ</a>
-        <a href="#" data-action="privacy" data-i18n="privacy">კონფიდენციალურობა</a>
-        <a href="#" data-action="contact" data-i18n="contact">კონტაქტი</a>
       </div>
 
-    </div>
-  </footer>
+      <div>© 2026 WELTO</div>
+    </footer>
 
-
-  <div class="overlay" id="overlay">
-    <div class="modal">
-      <h2 id="modalTitle">მალე</h2>
-      <p id="modalText"></p>
-      <button id="modalClose" data-i18n="close">დახურვა</button>
-    </div>
   </div>
 
-
   <script>
-    const content = {
+    const translations = {
       ka: {
         login: "შესვლა",
-        start: "რეგისტრაცია",
-        eyebrow: "პირადი ფინანსების მართვა",
-        headline: "შენი ფინანსური სამყარო ერთ სივრცეში.",
-        description: "ფული, ქონება და ფინანსური მომავალი — გაერთიანებული ერთიან, გააზრებულ სისტემაში.",
-        create: "დაიწყე ახლავე",
+        signup: "ანგარიშის შექმნა",
+        eyebrow: "ფინანსური ცხოვრება — ახალი ხედვით",
+        headline: 'შენი ფინანსური სამყარო. <span class="accent">ერთ სივრცეში.</span>',
+        description: "მართე შენი ფული, დაგეგმე მომავალი და დაინახე სრული ფინანსური სურათი — ერთი პლატფორმიდან.",
+        cta: "აღმოაჩინე WELTO",
         learn: "გაიგე მეტი",
-        visualCaption: "შენი ფინანსური ცხოვრების უფრო სრული და ნათელი ხედვა.",
-        moneyTitle: "ფული",
-        moneyDescription: "შენი შემოსავლები, ხარჯები და ყოველდღიური ფინანსები.",
-        wealthTitle: "ქონება",
-        wealthDescription: "აქტივები, დანაზოგები, ინვესტიციები და ვალდებულებები.",
-        futureTitle: "მომავალი",
-        futureDescription: "ფინანსური მიზნები, დაგეგმვა და პროგნოზები.",
-        copyright: "© 2026 WELTO. ყველა უფლება დაცულია.",
-        about: "ჩვენ შესახებ",
-        privacy: "კონფიდენციალურობა",
+        note: "ერთი სივრცე. სრული ფინანსური სურათი.",
+        assets: "საერთო აქტივები",
+        overview: "ფინანსური მიმოხილვა",
+        period: "წლიური მიმოხილვა",
+        networth: "წმინდა ქონება",
+        growth: "+12.8% · ბოლო 12 თვე",
+        recent: "ბოლო ოპერაციები",
+        today: "დღეს",
+        income: "შემოსავალი",
+        yesterday: "გუშინ",
+        statement: "შენი ფული მეტია, ვიდრე უბრალოდ შემოსავალი და ხარჯები.",
         contact: "კონტაქტი",
-        close: "დახურვა",
-        modalTitle: "მალე",
-        loginMessage: "შესვლის სისტემა ამჟამად დამუშავების პროცესშია.",
-        registerMessage: "WELTO-ზე რეგისტრაცია მალე იქნება ხელმისაწვდომი.",
-        privacyMessage: "კონფიდენციალურობის პირობები გამოქვეყნდება პლატფორმის გაშვებამდე.",
-        contactMessage: "საკონტაქტო ინფორმაცია მალე დაემატება."
+        about: "ჩვენ შესახებ"
       },
-
       en: {
         login: "Log in",
-        start: "Get started",
-        eyebrow: "PERSONAL FINANCE MANAGEMENT",
-        headline: "Your entire financial world. One place.",
-        description: "Your money, wealth and financial future — brought together in one thoughtful system.",
-        create: "Get started",
-        learn: "Discover WELTO",
-        visualCaption: "A more complete perspective on your financial life.",
-        moneyTitle: "Money",
-        moneyDescription: "Your income, expenses and everyday finances.",
-        wealthTitle: "Wealth",
-        wealthDescription: "Assets, savings, investments and liabilities.",
-        futureTitle: "Future",
-        futureDescription: "Financial goals, planning and forecasts.",
-        copyright: "© 2026 WELTO. All rights reserved.",
-        about: "About",
-        privacy: "Privacy",
+        signup: "Create account",
+        eyebrow: "FINANCIAL LIFE, REDEFINED",
+        headline: 'Your financial world. <span class="accent">All in one place.</span>',
+        description: "Manage your money, plan your future and see your complete financial picture — all from one platform.",
+        cta: "Discover WELTO",
+        learn: "Learn more",
+        note: "One space. Your complete financial picture.",
+        assets: "Total assets",
+        overview: "Financial overview",
+        period: "Yearly overview",
+        networth: "Net worth",
+        growth: "+12.8% · Last 12 months",
+        recent: "Recent activity",
+        today: "Today",
+        income: "Income",
+        yesterday: "Yesterday",
+        statement: "Your money is more than income and expenses.",
         contact: "Contact",
-        close: "Close",
-        modalTitle: "Coming soon",
-        loginMessage: "The login system is currently in development.",
-        registerMessage: "Registration for WELTO will be available soon.",
-        privacyMessage: "Our privacy policy will be published before launch.",
-        contactMessage: "Contact information will be available soon."
+        about: "About us"
       }
     };
 
-    let currentLanguage = "ka";
-
-    const overlay = document.getElementById("overlay");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalText = document.getElementById("modalText");
-
     function setLanguage(language) {
-      currentLanguage = language;
       document.documentElement.lang = language;
-      document.body.lang = language;
 
       document.querySelectorAll("[data-i18n]").forEach(element => {
-        const key = element.dataset.i18n;
-        if (content[language][key]) {
-          element.textContent = content[language][key];
+        const key = element.getAttribute("data-i18n");
+        if (translations[language][key]) {
+          element.innerHTML = translations[language][key];
         }
       });
 
-      document.querySelectorAll("[data-language]").forEach(button => {
-        button.classList.toggle(
-          "active",
-          button.dataset.language === language
-        );
-      });
+      document.getElementById("kaBtn").classList.toggle("active", language === "ka");
+      document.getElementById("enBtn").classList.toggle("active", language === "en");
 
-      document.title = language === "ka"
-        ? "WELTO — ფინანსური სამყარო ერთ სივრცეში"
-        : "WELTO — Your Entire Financial World";
-
-      localStorage.setItem("welto-language", language);
+      try {
+        localStorage.setItem("welto-language", language);
+      } catch (error) {}
     }
 
-    function openModal(action) {
-      const t = content[currentLanguage];
+    let savedLanguage = "ka";
+    try {
+      savedLanguage = localStorage.getItem("welto-language") || "ka";
+    } catch (error) {}
 
-      modalTitle.textContent = t.modalTitle;
-
-      const messages = {
-        login: t.loginMessage,
-        register: t.registerMessage,
-        privacy: t.privacyMessage,
-        contact: t.contactMessage
-      };
-
-      modalText.textContent = messages[action] || "";
-      overlay.classList.add("open");
-    }
-
-    function closeModal() {
-      overlay.classList.remove("open");
-    }
-
-    document.querySelectorAll("[data-language]").forEach(button => {
-      button.addEventListener("click", () => {
-        setLanguage(button.dataset.language);
-      });
-    });
-
-    document.querySelectorAll("[data-action]").forEach(element => {
-      element.addEventListener("click", event => {
-        event.preventDefault();
-        openModal(element.dataset.action);
-      });
-    });
-
-    document.getElementById("modalClose").addEventListener("click", closeModal);
-
-    overlay.addEventListener("click", event => {
-      if (event.target === overlay) closeModal();
-    });
-
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape") closeModal();
-    });
-
-    const savedLanguage = localStorage.getItem("welto-language");
-    setLanguage(savedLanguage === "en" ? "en" : "ka");
+    setLanguage(savedLanguage);
   </script>
-
 </body>
 </html>
