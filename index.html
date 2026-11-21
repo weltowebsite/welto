@@ -1,28 +1,38 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#F4F6F8">
 
-  <title>WELTO — Your Entire Financial World</title>
-  <meta name="description" content="Manage your money, assets and financial future in one place with WELTO.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>WELTO — ფინანსური სამყარო ერთ სივრცეში</title>
+  <meta name="description" content="WELTO აერთიანებს შენს ფულს, ქონებასა და ფინანსურ მომავალს ერთ სივრცეში.">
 
   <style>
+    @font-face {
+      font-family: "BOG";
+      src: url("https://webstatic.bog.ge/fonts/BOG/BOG-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "BOG";
+      src: url("https://webstatic.bog.ge/fonts/BOG/BOG-Headline-Medium.woff2") format("woff2");
+      font-weight: 500 700;
+      font-display: swap;
+    }
+
     :root {
-      --midnight: #111316;
+      --ink: #111316;
       --graphite: #292E34;
+      --paper: #F4F6F8;
       --white: #FFFFFF;
-      --soft-white: #F4F6F8;
-      --ice-blue: #A7C3D9;
+      --ice: #A7C3D9;
       --silver: #B8BEC7;
-      --muted: #737B85;
-      --border: #E6E9ED;
-      --content-width: 1180px;
+      --muted: #747C85;
+      --line: #E3E7EB;
     }
 
     * {
@@ -36,15 +46,18 @@
     }
 
     body {
-      min-height: 100vh;
-      background: var(--white);
-      color: var(--midnight);
-      font-family: "Manrope", "Noto Sans Georgian", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "BOG", "Noto Sans Georgian", sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
-    body.georgian {
-      font-family: "Noto Sans Georgian", "Manrope", sans-serif;
+    button, a {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
     }
 
     a {
@@ -52,22 +65,17 @@
       text-decoration: none;
     }
 
-    button {
-      font: inherit;
-    }
-
     .container {
-      width: min(var(--content-width), calc(100% - 64px));
+      width: min(1320px, calc(100% - 112px));
       margin: 0 auto;
     }
 
     /* HEADER */
 
     .header {
-      width: 100%;
-      height: 82px;
-      border-bottom: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.97);
+      height: 88px;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
     }
 
     .header-inner {
@@ -77,78 +85,74 @@
       justify-content: space-between;
     }
 
-    .logo {
-      font-size: 25px;
+    .brand {
+      font-family: "Manrope", sans-serif;
+      font-size: 27px;
       font-weight: 800;
       letter-spacing: 3px;
-      color: var(--midnight);
     }
 
-    .header-actions {
+    .header-right {
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 34px;
     }
 
-    .language-switch {
+    .language {
       display: flex;
       align-items: center;
-      gap: 9px;
-      font-size: 12px;
-      font-weight: 600;
+      gap: 10px;
       color: var(--muted);
+      font-family: "Manrope", sans-serif;
+      font-size: 11px;
+      font-weight: 600;
     }
 
-    .language-switch button {
-      border: none;
+    .language button {
+      border: 0;
       background: transparent;
       color: var(--muted);
-      cursor: pointer;
-      transition: color 0.2s ease;
-      font-size: 12px;
-      font-weight: 600;
+      font-size: inherit;
+      font-weight: inherit;
+      opacity: .65;
     }
 
-    .language-switch button.active {
-      color: var(--midnight);
+    .language button.active {
+      color: var(--ink);
+      opacity: 1;
     }
 
-    .language-switch button:hover {
-      color: var(--midnight);
-    }
-
-    .language-divider {
+    .language span {
       color: var(--silver);
     }
 
-    .login-link {
-      font-size: 13px;
-      font-weight: 600;
+    .login {
       color: var(--graphite);
-      transition: opacity 0.2s ease;
+      font-size: 13px;
+      font-weight: 500;
+      transition: opacity .2s;
     }
 
-    .login-link:hover {
-      opacity: 0.6;
+    .login:hover {
+      opacity: .6;
     }
 
-    .primary-button {
+    .button {
       display: inline-flex;
-      align-items: center;
       justify-content: center;
-      min-height: 46px;
-      padding: 0 24px;
-      border: 1px solid var(--midnight);
-      border-radius: 5px;
-      background: var(--midnight);
+      align-items: center;
+      min-height: 49px;
+      padding: 0 27px;
+      border: 1px solid var(--ink);
+      border-radius: 3px;
+      background: var(--ink);
       color: var(--white);
       font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s ease, color 0.2s ease;
+      font-weight: 500;
+      transition: background .2s, border-color .2s;
     }
 
-    .primary-button:hover {
+    .button:hover {
       background: var(--graphite);
       border-color: var(--graphite);
     }
@@ -156,131 +160,182 @@
     /* HERO */
 
     .hero {
-      min-height: 610px;
+      min-height: 690px;
       display: flex;
       align-items: center;
-      padding: 100px 0 110px;
+      padding: 90px 0 100px;
     }
 
-    .hero-content {
-      max-width: 790px;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      align-items: center;
+      gap: 75px;
     }
 
     .eyebrow {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 30px;
-      color: #697480;
-      font-size: 11px;
+      margin-bottom: 34px;
+      color: #737D87;
+      font-family: "Manrope", sans-serif;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 2.2px;
+      letter-spacing: 2px;
       text-transform: uppercase;
     }
 
-    .eyebrow-line {
-      width: 27px;
-      height: 1px;
-      background: var(--ice-blue);
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 2px;
+      background: var(--ice);
     }
 
-    .hero h1 {
-      max-width: 780px;
-      font-size: clamp(43px, 6.2vw, 76px);
-      line-height: 1.13;
-      letter-spacing: -3.5px;
-      font-weight: 600;
-      color: var(--midnight);
+    h1 {
+      max-width: 790px;
+      font-size: clamp(54px, 6.1vw, 86px);
+      font-weight: 500;
+      line-height: 1.16;
+      letter-spacing: -2.8px;
+    }
+
+    body[lang="ka"] h1 {
+      line-height: 1.35;
+      letter-spacing: -1.5px;
     }
 
     .hero-description {
-      max-width: 510px;
-      margin-top: 27px;
+      max-width: 470px;
+      margin-top: 29px;
       color: var(--muted);
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.9;
-      font-weight: 400;
     }
 
     .hero-actions {
       display: flex;
       align-items: center;
-      gap: 25px;
-      margin-top: 36px;
+      gap: 27px;
+      margin-top: 39px;
     }
 
-    .secondary-link {
+    .text-link {
       color: var(--graphite);
       font-size: 13px;
-      font-weight: 600;
-      transition: opacity 0.2s ease;
+      font-weight: 500;
+      border-bottom: 1px solid var(--silver);
+      padding-bottom: 4px;
     }
 
-    .secondary-link:hover {
-      opacity: 0.6;
+    /* EDITORIAL VISUAL */
+
+    .hero-visual {
+      min-height: 440px;
+      padding: 39px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--ink);
+      color: var(--white);
     }
 
-    /* INTRODUCTION */
-
-    .intro-section {
-      padding: 34px 0 82px;
-    }
-
-    .intro-top {
+    .visual-top {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
-      gap: 30px;
-      padding-bottom: 25px;
-      border-bottom: 1px solid var(--border);
+      align-items: center;
     }
 
-    .intro-heading {
-      font-size: 16px;
+    .visual-label {
+      color: #B9C0C8;
+      font-family: "Manrope", sans-serif;
+      font-size: 9px;
       font-weight: 600;
-      color: var(--midnight);
+      letter-spacing: 2px;
     }
 
-    .intro-note {
-      max-width: 360px;
-      color: var(--muted);
-      font-size: 12px;
+    .visual-index {
+      color: #7E8791;
+      font-family: "Manrope", sans-serif;
+      font-size: 10px;
+    }
+
+    .visual-main {
+      padding: 55px 0;
+    }
+
+    .visual-word {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(42px, 5vw, 65px);
+      font-weight: 600;
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+
+    .visual-caption {
+      max-width: 250px;
+      margin-top: 22px;
+      color: #B6BEC7;
+      font-size: 14px;
       line-height: 1.8;
-      text-align: right;
     }
 
-    .features {
+    .visual-bottom {
+      padding-top: 20px;
+      border-top: 1px solid #373D45;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #AEB7C0;
+      font-family: "Manrope", sans-serif;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+    }
+
+    .visual-bottom strong {
+      color: var(--ice);
+      font-weight: 500;
+    }
+
+    /* PRINCIPLES */
+
+    .principles {
+      padding: 0 0 85px;
+    }
+
+    .principles-inner {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      margin-top: 0;
     }
 
-    .feature {
-      padding: 29px 28px 10px 0;
+    .principle {
+      padding: 28px 30px 29px 0;
     }
 
-    .feature + .feature {
-      padding-left: 28px;
-      border-left: 1px solid var(--border);
+    .principle + .principle {
+      padding-left: 30px;
+      border-left: 1px solid var(--line);
     }
 
-    .feature-label {
-      margin-bottom: 13px;
-      color: #8A929C;
+    .principle-number {
+      margin-bottom: 15px;
+      color: #929BA4;
+      font-family: "Manrope", sans-serif;
       font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1.7px;
+      letter-spacing: 1.5px;
     }
 
-    .feature h3 {
-      margin-bottom: 9px;
-      color: var(--graphite);
-      font-size: 17px;
-      font-weight: 700;
+    .principle h2 {
+      margin-bottom: 8px;
+      font-size: 19px;
+      font-weight: 500;
     }
 
-    .feature p {
-      max-width: 290px;
+    .principle p {
+      max-width: 300px;
       color: var(--muted);
       font-size: 12px;
       line-height: 1.8;
@@ -289,75 +344,71 @@
     /* FOOTER */
 
     .footer {
-      border-top: 1px solid var(--border);
-      padding: 26px 0;
+      padding: 26px 0 32px;
     }
 
     .footer-inner {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 20px;
     }
 
     .footer-brand {
-      font-size: 15px;
+      font-family: "Manrope", sans-serif;
+      font-size: 14px;
       font-weight: 800;
       letter-spacing: 2px;
     }
 
     .footer-copy {
-      color: #9299A2;
+      color: #89919A;
       font-size: 11px;
     }
 
     .footer-links {
       display: flex;
-      align-items: center;
-      gap: 23px;
+      gap: 24px;
     }
 
     .footer-links a {
       color: var(--muted);
       font-size: 11px;
-      transition: color 0.2s ease;
     }
 
     .footer-links a:hover {
-      color: var(--midnight);
+      color: var(--ink);
     }
 
-    /* ACCESS MESSAGE */
+    /* MODAL */
 
-    .modal-overlay {
+    .overlay {
       position: fixed;
       inset: 0;
-      z-index: 20;
+      z-index: 10;
       display: none;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       padding: 24px;
-      background: rgba(17, 19, 22, 0.38);
+      background: rgba(17, 19, 22, .45);
     }
 
-    .modal-overlay.visible {
+    .overlay.open {
       display: flex;
     }
 
     .modal {
       width: 100%;
-      max-width: 410px;
-      padding: 38px;
+      max-width: 390px;
+      padding: 40px;
       background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      text-align: center;
+      border-radius: 4px;
     }
 
     .modal h2 {
-      margin-bottom: 13px;
-      font-size: 23px;
-      font-weight: 700;
+      margin-bottom: 12px;
+      font-size: 24px;
+      font-weight: 500;
     }
 
     .modal p {
@@ -367,182 +418,168 @@
       line-height: 1.8;
     }
 
-    .modal-close {
-      min-width: 110px;
-      min-height: 42px;
-      padding: 0 20px;
-      border: none;
-      border-radius: 4px;
-      background: var(--midnight);
+    .modal button {
+      min-height: 43px;
+      padding: 0 23px;
+      border: 0;
+      border-radius: 3px;
+      background: var(--ink);
       color: var(--white);
       font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    /* GEORGIAN TYPOGRAPHY */
-
-    body.georgian .hero h1 {
-      letter-spacing: -1.7px;
-      line-height: 1.35;
-    }
-
-    body.georgian .eyebrow {
-      letter-spacing: 0.8px;
-    }
-
-    body.georgian .feature-label {
-      letter-spacing: 0.7px;
     }
 
     /* RESPONSIVE */
 
-    @media (max-width: 760px) {
+    @media (max-width: 950px) {
       .container {
-        width: min(100% - 40px, var(--content-width));
+        width: calc(100% - 64px);
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 55px;
+      }
+
+      .hero {
+        padding: 90px 0 80px;
+      }
+
+      .hero-visual {
+        min-height: 350px;
+      }
+
+      .visual-main {
+        padding: 35px 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: calc(100% - 36px);
       }
 
       .header {
         height: 72px;
       }
 
-      .logo {
+      .brand {
         font-size: 22px;
       }
 
-      .header-actions {
-        gap: 16px;
+      .header-right {
+        gap: 15px;
       }
 
-      .primary-button {
-        min-height: 41px;
+      .login {
+        font-size: 11px;
+      }
+
+      .button {
+        min-height: 42px;
         padding: 0 15px;
         font-size: 11px;
       }
 
-      .login-link {
-        font-size: 12px;
-      }
-
       .hero {
-        min-height: auto;
-        padding: 110px 0 105px;
+        padding: 85px 0 65px;
       }
 
-      .hero h1 {
-        font-size: clamp(40px, 9vw, 60px);
-        letter-spacing: -2px;
+      h1 {
+        font-size: clamp(43px, 11vw, 60px);
+        letter-spacing: -1.8px;
+      }
+
+      body[lang="ka"] h1 {
+        letter-spacing: -1px;
       }
 
       .hero-description {
+        margin-top: 22px;
         font-size: 14px;
-      }
-
-      .intro-section {
-        padding: 20px 0 60px;
-      }
-
-      .intro-top {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .intro-note {
-        text-align: left;
-      }
-
-      .features {
-        grid-template-columns: 1fr;
-      }
-
-      .feature {
-        padding: 25px 0;
-      }
-
-      .feature + .feature {
-        padding-left: 0;
-        border-left: none;
-        border-top: 1px solid var(--border);
-      }
-
-      .feature p {
-        max-width: 420px;
-      }
-
-      .footer-inner {
-        flex-wrap: wrap;
-      }
-
-      .footer-links {
-        gap: 15px;
-      }
-    }
-
-    @media (max-width: 430px) {
-      .container {
-        width: calc(100% - 32px);
-      }
-
-      .header-actions {
-        gap: 11px;
-      }
-
-      .language-switch {
-        gap: 6px;
-      }
-
-      .login-link {
-        font-size: 11px;
-      }
-
-      .primary-button {
-        padding: 0 11px;
-        font-size: 10px;
-      }
-
-      .hero {
-        padding: 90px 0;
-      }
-
-      .hero h1 {
-        font-size: 41px;
       }
 
       .hero-actions {
         gap: 18px;
+        margin-top: 30px;
+      }
+
+      .hero-visual {
+        min-height: 310px;
+        padding: 26px;
+      }
+
+      .visual-word {
+        font-size: 48px;
+      }
+
+      .principles {
+        padding-bottom: 55px;
+      }
+
+      .principles-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .principle {
+        padding: 24px 0;
+      }
+
+      .principle + .principle {
+        padding-left: 0;
+        border-left: 0;
+        border-top: 1px solid var(--line);
       }
 
       .footer-inner {
-        align-items: flex-start;
         flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .header-right {
+        gap: 10px;
+      }
+
+      .language {
+        gap: 6px;
+      }
+
+      .login {
+        font-size: 10px;
+      }
+
+      .header .button {
+        padding: 0 10px;
+        font-size: 10px;
       }
     }
   </style>
 </head>
 
-<body>
+<body lang="ka">
 
-  <!-- HEADER -->
   <header class="header">
     <div class="container header-inner">
 
-      <a href="#" class="logo">WELTO</a>
+      <a class="brand" href="#">WELTO</a>
 
-      <div class="header-actions">
+      <div class="header-right">
 
-        <div class="language-switch" aria-label="Language selection">
-          <button type="button" class="active" data-lang="en">EN</button>
-          <span class="language-divider">/</span>
-          <button type="button" data-lang="ka">KA</button>
+        <div class="language">
+          <button class="active" data-language="ka">KA</button>
+          <span>/</span>
+          <button data-language="en">EN</button>
         </div>
 
-        <a href="#" class="login-link" data-action="login" data-i18n="login">
-          Log in
-        </a>
+        <a href="#" class="login" data-action="login" data-i18n="login">შესვლა</a>
 
-        <button class="primary-button" type="button" data-action="register" data-i18n="getStarted">
-          Get started
+        <button class="button" data-action="register" data-i18n="start">
+          ანგარიშის შექმნა
         </button>
 
       </div>
@@ -552,251 +589,236 @@
 
   <main>
 
-    <!-- HERO -->
     <section class="hero">
-      <div class="container">
+      <div class="container hero-grid">
 
         <div class="hero-content">
 
-          <div class="eyebrow">
-            <span class="eyebrow-line"></span>
-            <span data-i18n="eyebrow">PERSONAL FINANCE, REDEFINED</span>
+          <div class="eyebrow" data-i18n="eyebrow">
+            PERSONAL FINANCE MANAGEMENT
           </div>
 
           <h1 data-i18n="headline">
-            Your entire financial world. One place.
+            შენი ფინანსური სამყარო ერთ სივრცეში.
           </h1>
 
           <p class="hero-description" data-i18n="description">
-            Manage your money, assets and financial future with clarity and control.
+            ფული, ქონება და ფინანსური მომავალი — გაერთიანებული ერთიან, გააზრებულ სისტემაში.
           </p>
 
           <div class="hero-actions">
 
-            <button class="primary-button" type="button" data-action="register" data-i18n="createAccount">
-              Create your account
+            <button class="button" data-action="register" data-i18n="create">
+              დაიწყე ახლავე
             </button>
 
-            <a href="#about" class="secondary-link" data-i18n="discover">
-              Discover WELTO
+            <a href="#about" class="text-link" data-i18n="learn">
+              გაიგე მეტი
             </a>
 
           </div>
 
         </div>
+
+
+        <div class="hero-visual">
+
+          <div class="visual-top">
+            <span class="visual-label">WELTO / FINANCIAL PLATFORM</span>
+            <span class="visual-index">01 — 01</span>
+          </div>
+
+          <div class="visual-main">
+            <div class="visual-word">WELTO.</div>
+            <p class="visual-caption" data-i18n="visualCaption">
+              A more complete perspective on your financial life.
+            </p>
+          </div>
+
+          <div class="visual-bottom">
+            <span>PERSONAL FINANCE</span>
+            <strong>EST. 2026</strong>
+          </div>
+
+        </div>
+
       </div>
     </section>
 
 
-    <!-- INTRODUCTION -->
-    <section class="intro-section" id="about">
-      <div class="container">
+    <section class="principles" id="about">
+      <div class="container principles-inner">
 
-        <div class="intro-top">
-
-          <h2 class="intro-heading" data-i18n="introTitle">
-            Everything connected.
-          </h2>
-
-          <p class="intro-note" data-i18n="introDescription">
-            A complete view of your financial life, thoughtfully brought together in one place.
+        <article class="principle">
+          <div class="principle-number">01</div>
+          <h2 data-i18n="moneyTitle">ფული</h2>
+          <p data-i18n="moneyDescription">
+            შენი შემოსავლები, ხარჯები და ყოველდღიური ფინანსები.
           </p>
+        </article>
 
-        </div>
+        <article class="principle">
+          <div class="principle-number">02</div>
+          <h2 data-i18n="wealthTitle">ქონება</h2>
+          <p data-i18n="wealthDescription">
+            აქტივები, დანაზოგები, ინვესტიციები და ვალდებულებები.
+          </p>
+        </article>
 
-        <div class="features">
+        <article class="principle">
+          <div class="principle-number">03</div>
+          <h2 data-i18n="futureTitle">მომავალი</h2>
+          <p data-i18n="futureDescription">
+            ფინანსური მიზნები, დაგეგმვა და პროგნოზები.
+          </p>
+        </article>
 
-          <article class="feature">
-            <div class="feature-label" data-i18n="featureOneLabel">01 / MONEY</div>
-            <h3 data-i18n="featureOneTitle">Your money</h3>
-            <p data-i18n="featureOneDescription">
-              Income, expenses, accounts and everyday financial activity.
-            </p>
-          </article>
-
-          <article class="feature">
-            <div class="feature-label" data-i18n="featureTwoLabel">02 / WEALTH</div>
-            <h3 data-i18n="featureTwoTitle">Your wealth</h3>
-            <p data-i18n="featureTwoDescription">
-              Assets, property, investments, savings and liabilities.
-            </p>
-          </article>
-
-          <article class="feature">
-            <div class="feature-label" data-i18n="featureThreeLabel">03 / FUTURE</div>
-            <h3 data-i18n="featureThreeTitle">Your future</h3>
-            <p data-i18n="featureThreeDescription">
-              Financial goals, planning, forecasts and informed decisions.
-            </p>
-          </article>
-
-        </div>
       </div>
     </section>
 
   </main>
 
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-inner">
 
       <div class="footer-brand">WELTO</div>
 
       <div class="footer-copy" data-i18n="copyright">
-        © 2026 WELTO. All rights reserved.
+        © 2026 WELTO. ყველა უფლება დაცულია.
       </div>
 
-      <nav class="footer-links">
-        <a href="#about" data-i18n="aboutLink">About</a>
-        <a href="#" data-action="privacy" data-i18n="privacy">Privacy</a>
-        <a href="#" data-action="terms" data-i18n="terms">Terms</a>
-      </nav>
+      <div class="footer-links">
+        <a href="#about" data-i18n="about">ჩვენ შესახებ</a>
+        <a href="#" data-action="privacy" data-i18n="privacy">კონფიდენციალურობა</a>
+        <a href="#" data-action="contact" data-i18n="contact">კონტაქტი</a>
+      </div>
 
     </div>
   </footer>
 
 
-  <!-- INFORMATION MODAL -->
-  <div class="modal-overlay" id="messageModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="overlay" id="overlay">
     <div class="modal">
-
-      <h2 id="modalTitle" data-i18n="modalTitle">Coming soon</h2>
-
-      <p id="modalDescription" data-i18n="modalDescription">
-        WELTO account access is currently in development.
-      </p>
-
-      <button class="modal-close" type="button" id="closeModal" data-i18n="close">
-        Close
-      </button>
-
+      <h2 id="modalTitle">მალე</h2>
+      <p id="modalText"></p>
+      <button id="modalClose" data-i18n="close">დახურვა</button>
     </div>
   </div>
 
 
   <script>
-    const translations = {
-      en: {
-        login: "Log in",
-        getStarted: "Get started",
-        eyebrow: "PERSONAL FINANCE, REDEFINED",
-        headline: "Your entire financial world. One place.",
-        description: "Manage your money, assets and financial future with clarity and control.",
-        createAccount: "Create your account",
-        discover: "Discover WELTO",
-        introTitle: "Everything connected.",
-        introDescription: "A complete view of your financial life, thoughtfully brought together in one place.",
-        featureOneLabel: "01 / MONEY",
-        featureOneTitle: "Your money",
-        featureOneDescription: "Income, expenses, accounts and everyday financial activity.",
-        featureTwoLabel: "02 / WEALTH",
-        featureTwoTitle: "Your wealth",
-        featureTwoDescription: "Assets, property, investments, savings and liabilities.",
-        featureThreeLabel: "03 / FUTURE",
-        featureThreeTitle: "Your future",
-        featureThreeDescription: "Financial goals, planning, forecasts and informed decisions.",
-        copyright: "© 2026 WELTO. All rights reserved.",
-        aboutLink: "About",
-        privacy: "Privacy",
-        terms: "Terms",
-        modalTitle: "Coming soon",
-        modalDescription: "WELTO account access is currently in development. Registration and login will be available soon.",
-        close: "Close",
-        privacyMessage: "WELTO's privacy information will be published before the platform launches.",
-        termsMessage: "WELTO's terms of use will be published before the platform launches."
-      },
-
+    const content = {
       ka: {
         login: "შესვლა",
-        getStarted: "დაწყება",
-        eyebrow: "პირადი ფინანსები — ახალი ხედვით",
-        headline: "შენი ფინანსური სამყარო. ერთ სივრცეში.",
-        description: "მართე შენი ფული, ქონება და ფინანსური მომავალი მარტივად, ნათლად და სრულყოფილად.",
-        createAccount: "ანგარიშის შექმნა",
-        discover: "გაიცანი WELTO",
-        introTitle: "ყველაფერი ერთიან სისტემაში.",
-        introDescription: "შენი ფინანსური ცხოვრების სრული სურათი, გააზრებულად გაერთიანებული ერთ სივრცეში.",
-        featureOneLabel: "01 / ფული",
-        featureOneTitle: "შენი ფული",
-        featureOneDescription: "შემოსავლები, ხარჯები, ანგარიშები და ყოველდღიური ფინანსური ოპერაციები.",
-        featureTwoLabel: "02 / ქონება",
-        featureTwoTitle: "შენი ქონება",
-        featureTwoDescription: "აქტივები, უძრავი ქონება, ინვესტიციები, დანაზოგები და ვალდებულებები.",
-        featureThreeLabel: "03 / მომავალი",
-        featureThreeTitle: "შენი მომავალი",
-        featureThreeDescription: "ფინანსური მიზნები, დაგეგმვა, პროგნოზები და გააზრებული გადაწყვეტილებები.",
+        start: "რეგისტრაცია",
+        eyebrow: "პირადი ფინანსების მართვა",
+        headline: "შენი ფინანსური სამყარო ერთ სივრცეში.",
+        description: "ფული, ქონება და ფინანსური მომავალი — გაერთიანებული ერთიან, გააზრებულ სისტემაში.",
+        create: "დაიწყე ახლავე",
+        learn: "გაიგე მეტი",
+        visualCaption: "შენი ფინანსური ცხოვრების უფრო სრული და ნათელი ხედვა.",
+        moneyTitle: "ფული",
+        moneyDescription: "შენი შემოსავლები, ხარჯები და ყოველდღიური ფინანსები.",
+        wealthTitle: "ქონება",
+        wealthDescription: "აქტივები, დანაზოგები, ინვესტიციები და ვალდებულებები.",
+        futureTitle: "მომავალი",
+        futureDescription: "ფინანსური მიზნები, დაგეგმვა და პროგნოზები.",
         copyright: "© 2026 WELTO. ყველა უფლება დაცულია.",
-        aboutLink: "ჩვენ შესახებ",
+        about: "ჩვენ შესახებ",
         privacy: "კონფიდენციალურობა",
-        terms: "წესები",
-        modalTitle: "მალე",
-        modalDescription: "WELTO-ს ანგარიშის სისტემა ჯერ დამუშავების პროცესშია. რეგისტრაცია და შესვლა მალე იქნება ხელმისაწვდომი.",
+        contact: "კონტაქტი",
         close: "დახურვა",
-        privacyMessage: "WELTO-ს კონფიდენციალურობის პირობები პლატფორმის გაშვებამდე გამოქვეყნდება.",
-        termsMessage: "WELTO-ს გამოყენების პირობები პლატფორმის გაშვებამდე გამოქვეყნდება."
+        modalTitle: "მალე",
+        loginMessage: "შესვლის სისტემა ამჟამად დამუშავების პროცესშია.",
+        registerMessage: "WELTO-ზე რეგისტრაცია მალე იქნება ხელმისაწვდომი.",
+        privacyMessage: "კონფიდენციალურობის პირობები გამოქვეყნდება პლატფორმის გაშვებამდე.",
+        contactMessage: "საკონტაქტო ინფორმაცია მალე დაემატება."
+      },
+
+      en: {
+        login: "Log in",
+        start: "Get started",
+        eyebrow: "PERSONAL FINANCE MANAGEMENT",
+        headline: "Your entire financial world. One place.",
+        description: "Your money, wealth and financial future — brought together in one thoughtful system.",
+        create: "Get started",
+        learn: "Discover WELTO",
+        visualCaption: "A more complete perspective on your financial life.",
+        moneyTitle: "Money",
+        moneyDescription: "Your income, expenses and everyday finances.",
+        wealthTitle: "Wealth",
+        wealthDescription: "Assets, savings, investments and liabilities.",
+        futureTitle: "Future",
+        futureDescription: "Financial goals, planning and forecasts.",
+        copyright: "© 2026 WELTO. All rights reserved.",
+        about: "About",
+        privacy: "Privacy",
+        contact: "Contact",
+        close: "Close",
+        modalTitle: "Coming soon",
+        loginMessage: "The login system is currently in development.",
+        registerMessage: "Registration for WELTO will be available soon.",
+        privacyMessage: "Our privacy policy will be published before launch.",
+        contactMessage: "Contact information will be available soon."
       }
     };
 
-    let currentLanguage = "en";
+    let currentLanguage = "ka";
 
-    const modal = document.getElementById("messageModal");
+    const overlay = document.getElementById("overlay");
     const modalTitle = document.getElementById("modalTitle");
-    const modalDescription = document.getElementById("modalDescription");
+    const modalText = document.getElementById("modalText");
 
     function setLanguage(language) {
-      if (!translations[language]) return;
-
       currentLanguage = language;
-
       document.documentElement.lang = language;
-      document.body.classList.toggle("georgian", language === "ka");
+      document.body.lang = language;
 
       document.querySelectorAll("[data-i18n]").forEach(element => {
         const key = element.dataset.i18n;
-
-        if (translations[language][key]) {
-          element.textContent = translations[language][key];
+        if (content[language][key]) {
+          element.textContent = content[language][key];
         }
       });
 
-      document.querySelectorAll("[data-lang]").forEach(button => {
+      document.querySelectorAll("[data-language]").forEach(button => {
         button.classList.toggle(
           "active",
-          button.dataset.lang === language
+          button.dataset.language === language
         );
       });
 
       document.title = language === "ka"
-        ? "WELTO — შენი ფინანსური სამყარო"
+        ? "WELTO — ფინანსური სამყარო ერთ სივრცეში"
         : "WELTO — Your Entire Financial World";
 
       localStorage.setItem("welto-language", language);
     }
 
-    function openModal(type) {
-      const language = translations[currentLanguage];
+    function openModal(action) {
+      const t = content[currentLanguage];
 
-      modalTitle.textContent = language.modalTitle;
+      modalTitle.textContent = t.modalTitle;
 
-      if (type === "privacy") {
-        modalDescription.textContent = language.privacyMessage;
-      } else if (type === "terms") {
-        modalDescription.textContent = language.termsMessage;
-      } else {
-        modalDescription.textContent = language.modalDescription;
-      }
+      const messages = {
+        login: t.loginMessage,
+        register: t.registerMessage,
+        privacy: t.privacyMessage,
+        contact: t.contactMessage
+      };
 
-      modal.classList.add("visible");
+      modalText.textContent = messages[action] || "";
+      overlay.classList.add("open");
     }
 
     function closeModal() {
-      modal.classList.remove("visible");
+      overlay.classList.remove("open");
     }
 
-    document.querySelectorAll("[data-lang]").forEach(button => {
+    document.querySelectorAll("[data-language]").forEach(button => {
       button.addEventListener("click", () => {
-        setLanguage(button.dataset.lang);
+        setLanguage(button.dataset.language);
       });
     });
 
@@ -807,22 +829,18 @@
       });
     });
 
-    document.getElementById("closeModal").addEventListener("click", closeModal);
+    document.getElementById("modalClose").addEventListener("click", closeModal);
 
-    modal.addEventListener("click", event => {
-      if (event.target === modal) {
-        closeModal();
-      }
+    overlay.addEventListener("click", event => {
+      if (event.target === overlay) closeModal();
     });
 
     document.addEventListener("keydown", event => {
-      if (event.key === "Escape") {
-        closeModal();
-      }
+      if (event.key === "Escape") closeModal();
     });
 
     const savedLanguage = localStorage.getItem("welto-language");
-    setLanguage(savedLanguage === "ka" ? "ka" : "en");
+    setLanguage(savedLanguage === "en" ? "en" : "ka");
   </script>
 
 </body>
